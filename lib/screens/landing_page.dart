@@ -8,7 +8,7 @@ class LandingPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Stack(
-        children: [ContainerWidget()],
+        children: [const BackgroundImage(), ContainerWidget()],
       ),
     );
   }

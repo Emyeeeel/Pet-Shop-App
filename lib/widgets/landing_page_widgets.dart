@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class BackgroundImage extends StatelessWidget {
+  const BackgroundImage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Positioned(
@@ -10,9 +12,9 @@ class BackgroundImage extends StatelessWidget {
       child: Container(
         height: 540,
         width: MediaQuery.of(context).size.width,
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('image'),
+            image: AssetImage('lib/assets/cat-1.png'),
             fit: BoxFit.fill,
           ),
         ),
@@ -21,8 +23,11 @@ class BackgroundImage extends StatelessWidget {
   }
 }
 
+// ignore: must_be_immutable
 class ContainerWidget extends StatelessWidget {
   int counter = 0;
+
+  ContainerWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
