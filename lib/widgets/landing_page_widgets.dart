@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../screens/catalog_page.dart';
+
 class BackgroundImage extends StatelessWidget {
   const BackgroundImage({super.key});
 
@@ -23,11 +25,27 @@ class BackgroundImage extends StatelessWidget {
   }
 }
 
-// ignore: must_be_immutable
-class ContainerWidget extends StatelessWidget {
+class ContainerWidget extends StatefulWidget {
+  ContainerWidget({Key? key}) : super(key: key);
+
+  @override
+  _ContainerWidgetState createState() => _ContainerWidgetState();
+}
+
+class _ContainerWidgetState extends State<ContainerWidget> {
   int counter = 0;
 
-  ContainerWidget({super.key});
+  void incrementCounter() {
+    setState(() {
+      counter++;
+      if (counter >= 3) {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const CatalogPage()),
+        );
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -82,6 +100,7 @@ class ContainerWidget extends StatelessWidget {
               height: 44,
             ),
             GestureDetector(
+              onTap: incrementCounter,
               child: Container(
                 width: 366.69,
                 height: 52.54,
@@ -90,7 +109,7 @@ class ContainerWidget extends StatelessWidget {
                     color: const Color(0xFFE8BE13)),
                 child: Center(
                   child: Text(
-                    'Get Started',
+                    counter != 2 ? 'Next' : 'Get Started',
                     style: GoogleFonts.poppins(
                         fontSize: 17.51,
                         fontWeight: FontWeight.w700,
