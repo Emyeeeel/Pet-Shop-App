@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:pet_shop_app/models/catalog_models.dart';
+import 'package:provider/provider.dart';
+
+import '../provider/cart_provider.dart';
 
 class CatalogPage extends StatefulWidget {
   const CatalogPage({Key? key}) : super(key: key);
@@ -71,6 +75,23 @@ class _CatalogPageState extends State<CatalogPage> {
         const SizedBox(
           height: 42,
         ),
+        Expanded(
+          child: Consumer<CartModel>(
+            builder: (context, value, child) {
+              return GridView.builder(
+                itemCount: value.shopItems.length,
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2),
+                itemBuilder: (context, index) {
+                  return CatProductTile(
+                      catName: value.shopItems[index][0],
+                      catPicPath: value.shopItems[index][1],
+                      price: value.shopItems[index][2]);
+                },
+              );
+            },
+          ),
+        )
       ],
     ));
   }

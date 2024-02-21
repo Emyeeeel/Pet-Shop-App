@@ -1,40 +1,61 @@
-class CatalogModel {
-  static List<Cat> catProducts = [
-    Cat(1, 'Persian Cat', 85, 0),
-    Cat(2, 'Sphinx Cat', 60, 0),
-    Cat(3, 'Bengal Cat', 90, 0),
-    Cat(4, 'Abyssinian Cat', 75, 0),
-    Cat(5, 'Burmese Cat', 75, 0),
-    Cat(6, 'Russian Blue Cat', 60, 0),
-    Cat(7, 'Siamese Cat', 90, 0),
-    Cat(8, 'Main Coon Cat', 85, 0),
-    Cat(9, 'Ragdoll Cat', 80, 0),
-    Cat(10, 'Scottish Fold Cat', 95, 0),
-  ];
-}
+import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
-class Cat {
-  final int id;
-  final String name;
+class CatProductTile extends StatelessWidget {
+  final String catName;
+  final String catPicPath;
   final double price;
-  final int quantity;
 
-  Cat(this.id, this.name, this.price, this.quantity);
-}
+  CatProductTile({
+    super.key,
+    required this.catName,
+    required this.catPicPath,
+    required this.price,
+  });
 
-class CartItem {
-  final Cat item;
-  int quantity;
-
-  CartItem(this.item, this.quantity);
-
-  void incrementQuantity() {
-    quantity++;
-  }
-
-  void decrementQuantity() {
-    if (quantity > 1) {
-      quantity--;
-    }
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      width: 168.5,
+      height: 171,
+      child: Column(
+        children: [
+          Container(
+              width: 144.5,
+              height: 101,
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(14),
+                  image: DecorationImage(image: AssetImage(catPicPath)))),
+          const SizedBox(
+            height: 10,
+          ),
+          Text(
+            catName,
+            style: const TextStyle(
+              color: Color(0xFF2E2D2D),
+              fontSize: 20,
+              fontFamily: 'NATS',
+              fontWeight: FontWeight.w400,
+            ),
+          ),
+          const SizedBox(
+            height: 5,
+          ),
+          Row(
+            children: [
+              Text(
+                price.toString(),
+                style: const TextStyle(
+                  color: Color(0xFFE8BE13),
+                  fontSize: 16,
+                  fontFamily: 'NATS',
+                  fontWeight: FontWeight.w400,
+                ),
+              ),
+            ],
+          )
+        ],
+      ),
+    );
   }
 }
