@@ -71,6 +71,11 @@ flutter:
   assets:
     - lib/assets/cat-1.png
     - lib/assets/cat-2.png
+    - lib/assets/cat-3.png
+    - lib/assets/cat-4.png
+    - lib/assets/cat-5.png
+    - lib/assets/cat-6.png
+    - lib/assets/cat-7.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

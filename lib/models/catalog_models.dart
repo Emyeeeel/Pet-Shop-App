@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter_svg/svg.dart';
 
 class CatProductTile extends StatelessWidget {
   final String catName;
@@ -64,7 +64,12 @@ class CatProductTile extends StatelessWidget {
                           fontWeight: FontWeight.w400,
                         ),
                       ),
-                      //add cart svg given filepath "lib/assets/cart_svg.svg"
+                      SvgPicture.asset(
+                        'lib/assets/cart_svg.svg',
+                        height: 12,
+                        width: 14,
+                        color: Color(0xFFE8BE13),
+                      ),
                     ],
                   ),
                 ),
