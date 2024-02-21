@@ -5,13 +5,14 @@ class CatProductTile extends StatelessWidget {
   final String catName;
   final String catPicPath;
   final double price;
+  void Function()? onTap;
 
-  CatProductTile({
-    super.key,
-    required this.catName,
-    required this.catPicPath,
-    required this.price,
-  });
+  CatProductTile(
+      {super.key,
+      required this.catName,
+      required this.catPicPath,
+      required this.price,
+      required this.onTap});
 
   @override
   Widget build(BuildContext context) {
@@ -65,10 +66,13 @@ class CatProductTile extends StatelessWidget {
                         ),
                       ),
                       const Spacer(),
-                      SvgPicture.asset(
-                        'lib/assets/cart_svg.svg',
-                        height: 16,
-                        width: 16,
+                      GestureDetector(
+                        onTap: onTap,
+                        child: SvgPicture.asset(
+                          'lib/assets/cart_svg.svg',
+                          height: 16,
+                          width: 16,
+                        ),
                       ),
                     ],
                   ),

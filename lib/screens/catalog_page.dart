@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:pet_shop_app/models/catalog_models.dart';
+import 'package:pet_shop_app/screens/cart_page.dart';
 import 'package:provider/provider.dart';
 
 import '../provider/cart_provider.dart';
@@ -81,14 +82,28 @@ class _CatalogPageState extends State<CatalogPage> {
                     crossAxisCount: 2),
                 itemBuilder: (context, index) {
                   return CatProductTile(
-                      catName: value.shopItems[index][0],
-                      catPicPath: value.shopItems[index][1],
-                      price: value.shopItems[index][2]);
+                    catName: value.shopItems[index][0],
+                    catPicPath: value.shopItems[index][1],
+                    price: value.shopItems[index][2],
+                    onTap: () {
+                      Provider.of<CartModel>(context, listen: false)
+                          .addToCart(index);
+                    },
+                  );
                 },
               );
             },
           ),
-        )
+        ),
+        GestureDetector(
+          onTap: () => Navigator.push(context,
+              MaterialPageRoute(builder: (context) => const CartPage())),
+          child: Container(
+            width: 50,
+            height: 50,
+            decoration: BoxDecoration(color: Color(0xFF000000)),
+          ),
+        ),
       ],
     ));
   }
