@@ -44,34 +44,104 @@ class CartPage extends StatelessWidget {
                       return Padding(
                         padding: const EdgeInsets.all(12.0),
                         child: Container(
+                          height: 140,
                           decoration: BoxDecoration(
                               color: Colors.grey[200],
                               borderRadius: BorderRadius.circular(8)),
-                          child: ListTile(
-                            leading: Image.asset(
-                              value.cartItems[index][1],
-                              height: 36,
-                            ),
-                            title: Text(
-                              value.cartItems[index][0],
-                              style: GoogleFonts.poppins(
-                                fontSize: 18,
-                                fontWeight: FontWeight.w400,
+                          child: Row(
+                            children: [
+                              Padding(
+                                padding:
+                                    const EdgeInsets.fromLTRB(10, 15, 10, 15),
+                                child: Container(
+                                  width: 144,
+                                  height: 110,
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(15),
+                                      image: DecorationImage(
+                                          image: AssetImage(
+                                            value.cartItems[index][1],
+                                          ),
+                                          fit: BoxFit.cover)),
+                                ),
                               ),
-                            ),
-                            subtitle: Text(
-                              '\$${double.parse(value.cartItems[index][2].toString()).toStringAsFixed(2)}',
-                              style: GoogleFonts.poppins(
-                                fontSize: 12,
-                                fontWeight: FontWeight.w400,
-                              ),
-                            ),
-                            trailing: IconButton(
-                              icon: const Icon(Icons.cancel),
-                              onPressed: () =>
-                                  Provider.of<CartModel>(context, listen: false)
-                                      .removeToCart(index),
-                            ),
+                              Padding(
+                                padding: const EdgeInsets.fromLTRB(0, 15, 0, 0),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    SizedBox(
+                                      height: 30,
+                                      child: Text(
+                                        value.cartItems[index][0],
+                                        style: GoogleFonts.poppins(
+                                          color: const Color(0xFF2E2D2D),
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.w500,
+                                        ),
+                                      ),
+                                    ),
+                                    Text(
+                                      'Quantity',
+                                      style: GoogleFonts.poppins(
+                                        color: const Color(0xFF928D8D),
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.w500,
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      width: 80,
+                                      height: 20,
+                                      child: Row(
+                                        children: [
+                                          Container(
+                                            width: 20,
+                                            decoration: BoxDecoration(
+                                                color: const Color(0xFFE8BE13),
+                                                borderRadius:
+                                                    BorderRadius.circular(5)),
+                                            child: Text(
+                                              '-',
+                                              style: GoogleFonts.poppins(
+                                                color: const Color(0xFF000000),
+                                                fontSize: 14,
+                                                fontWeight: FontWeight.w900,
+                                              ),
+                                              textAlign: TextAlign.center,
+                                            ),
+                                          ),
+                                          Spacer(),
+                                          Container(
+                                            width: 20,
+                                            decoration: BoxDecoration(
+                                                color: const Color(0xFFE8BE13),
+                                                borderRadius:
+                                                    BorderRadius.circular(5)),
+                                            child: Text(
+                                              '+',
+                                              style: GoogleFonts.poppins(
+                                                color: const Color(0xFF000000),
+                                                fontSize: 14,
+                                                fontWeight: FontWeight.w900,
+                                              ),
+                                              textAlign: TextAlign.center,
+                                            ),
+                                          )
+                                        ],
+                                      ),
+                                    ),
+                                    Text(
+                                      '\$${value.getTotalPrice()}',
+                                      style: GoogleFonts.poppins(
+                                        color: const Color(0xFFE8BE13),
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.w500,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              )
+                            ],
                           ),
                         ),
                       );
@@ -86,9 +156,8 @@ class CartPage extends StatelessWidget {
                   height: 159,
                   child: Column(
                     children: [
-                      SizedBox(
-                        width: 333,
-                        height: 44,
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 12),
                         child: Row(
                           children: [
                             Text(
@@ -111,26 +180,21 @@ class CartPage extends StatelessWidget {
                           ],
                         ),
                       ),
-                      Positioned(
-                        left: 0,
-                        right: 0,
-                        bottom: 0,
-                        child: Container(
-                          width: 361,
-                          height: 48,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(9),
-                              color: const Color(0xFFE8BE13)),
-                          child: Center(
-                            child: Text(
-                              'Place Order',
-                              style: GoogleFonts.poppins(
-                                fontSize: 18,
-                                fontWeight: FontWeight.w700,
-                                color: const Color(0xFFFFFFFF),
-                              ),
-                              textAlign: TextAlign.center,
+                      Container(
+                        width: 361,
+                        height: 48,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(9),
+                            color: const Color(0xFFE8BE13)),
+                        child: Center(
+                          child: Text(
+                            'Place Order',
+                            style: GoogleFonts.poppins(
+                              fontSize: 18,
+                              fontWeight: FontWeight.w700,
+                              color: const Color(0xFFFFFFFF),
                             ),
+                            textAlign: TextAlign.center,
                           ),
                         ),
                       )
