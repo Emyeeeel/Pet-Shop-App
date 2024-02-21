@@ -3,11 +3,17 @@ import 'package:pet_shop_app/screens/catalog_page.dart';
 import 'package:pet_shop_app/screens/landing_page.dart';
 import 'package:flutter/foundation.dart';
 import 'package:device_preview/device_preview.dart';
+import 'package:provider/provider.dart';
+
+import 'provider/cart_provider.dart';
 
 void main() => runApp(
       DevicePreview(
         enabled: !kReleaseMode,
-        builder: (context) => const MyApp(), // Wrap your app
+        builder: (context) => ChangeNotifierProvider(
+          create: (context) => CartModel(),
+          child: const MyApp(),
+        ),
       ),
     );
 
