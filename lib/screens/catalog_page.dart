@@ -30,7 +30,7 @@ class _CatalogPageState extends State<CatalogPage> {
           textAlign: TextAlign.center,
         ),
         const SizedBox(
-          height: 33,
+          height: 30,
         ),
         Container(
           width: 331,
@@ -71,9 +71,6 @@ class _CatalogPageState extends State<CatalogPage> {
               )
             ],
           ),
-        ),
-        const SizedBox(
-          height: 42,
         ),
         Expanded(
           child: Consumer<CartModel>(

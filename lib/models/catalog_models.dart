@@ -21,12 +21,12 @@ class CatProductTile extends StatelessWidget {
           width: 168.5,
           height: 171,
           decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(15),
-              border: Border.all(color: Colors.black)),
+            borderRadius: BorderRadius.circular(15),
+          ),
           child: Column(
             children: [
               Padding(
-                padding: const EdgeInsets.fromLTRB(12, 12, 12, 10),
+                padding: const EdgeInsets.fromLTRB(12, 12, 12, 5),
                 child: Container(
                     width: 144,
                     height: 101,
@@ -35,7 +35,7 @@ class CatProductTile extends StatelessWidget {
                         image: DecorationImage(image: AssetImage(catPicPath)))),
               ),
               Padding(
-                padding: const EdgeInsets.fromLTRB(12, 0, 12, 0),
+                padding: const EdgeInsets.fromLTRB(12, 0, 12, 5),
                 child: SizedBox(
                   width: 144,
                   child: Text(
@@ -56,7 +56,7 @@ class CatProductTile extends StatelessWidget {
                   child: Row(
                     children: [
                       Text(
-                        price.toString(),
+                        '\$$price',
                         style: const TextStyle(
                           color: Color(0xFFE8BE13),
                           fontSize: 16,
@@ -64,11 +64,11 @@ class CatProductTile extends StatelessWidget {
                           fontWeight: FontWeight.w400,
                         ),
                       ),
+                      const Spacer(),
                       SvgPicture.asset(
                         'lib/assets/cart_svg.svg',
-                        height: 12,
-                        width: 14,
-                        color: Color(0xFFE8BE13),
+                        height: 16,
+                        width: 16,
                       ),
                     ],
                   ),
