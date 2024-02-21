@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:pet_shop_app/widgets/navigation_bar.dart';
 import 'package:provider/provider.dart';
 
 import '../provider/cart_provider.dart';
 
 class CartPage extends StatelessWidget {
-  const CartPage({super.key});
+  const CartPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -22,19 +23,17 @@ class CartPage extends StatelessWidget {
           return Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // Let's order fresh items for you
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 24.0),
                 child: Text(
-                  "My Cart",
-                  style: GoogleFonts.notoSerif(
-                    fontSize: 36,
-                    fontWeight: FontWeight.bold,
+                  'Cart',
+                  style: GoogleFonts.poppins(
+                    fontSize: 20,
+                    fontWeight: FontWeight.w400,
                   ),
+                  textAlign: TextAlign.center,
                 ),
               ),
-
-              // list view of cart
               Expanded(
                 child: Padding(
                   padding: const EdgeInsets.all(12.0),
@@ -55,11 +54,17 @@ class CartPage extends StatelessWidget {
                             ),
                             title: Text(
                               value.cartItems[index][0],
-                              style: const TextStyle(fontSize: 18),
+                              style: GoogleFonts.poppins(
+                                fontSize: 18,
+                                fontWeight: FontWeight.w400,
+                              ),
                             ),
                             subtitle: Text(
-                              '\$' + value.cartItems[index][2].toString(),
-                              style: const TextStyle(fontSize: 12),
+                              '\$${double.parse(value.cartItems[index][2].toString()).toStringAsFixed(2)}',
+                              style: GoogleFonts.poppins(
+                                fontSize: 12,
+                                fontWeight: FontWeight.w400,
+                              ),
                             ),
                             trailing: IconButton(
                               icon: const Icon(Icons.cancel),
@@ -74,66 +79,66 @@ class CartPage extends StatelessWidget {
                   ),
                 ),
               ),
-
-              // total amount + pay now
-
               Padding(
-                padding: const EdgeInsets.all(36.0),
-                child: Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(8),
-                    color: Colors.green,
-                  ),
-                  padding: const EdgeInsets.all(24),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
+                child: SizedBox(
+                  width: 361,
+                  height: 159,
+                  child: Column(
                     children: [
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'Total Price',
-                            style: TextStyle(color: Colors.green[200]),
-                          ),
-
-                          const SizedBox(height: 8),
-                          // total price
-                          Text(
-                            '\$${value.getTotalPrice()}',
-                            style: const TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.white,
-                            ),
-                          ),
-                        ],
-                      ),
-
-                      // pay now
-                      Container(
-                        decoration: BoxDecoration(
-                          border: Border.all(color: Colors.green.shade200),
-                          borderRadius: BorderRadius.circular(28),
-                        ),
-                        padding: const EdgeInsets.all(12),
+                      SizedBox(
+                        width: 333,
+                        height: 44,
                         child: Row(
-                          children: const [
+                          children: [
                             Text(
-                              'Pay Now',
-                              style: TextStyle(color: Colors.white),
+                              'Total',
+                              style: GoogleFonts.poppins(
+                                fontSize: 12,
+                                fontWeight: FontWeight.w700,
+                                color: const Color(0xFF1D1D1B),
+                              ),
                             ),
-                            Icon(
-                              Icons.arrow_forward_ios,
-                              size: 16,
-                              color: Colors.white,
+                            const Spacer(),
+                            Text(
+                              '\$${value.getTotalPrice()}',
+                              style: GoogleFonts.poppins(
+                                fontSize: 12,
+                                fontWeight: FontWeight.w700,
+                                color: const Color(0xFF1D1D1B),
+                              ),
                             ),
                           ],
                         ),
                       ),
+                      Positioned(
+                        left: 0,
+                        right: 0,
+                        bottom: 0,
+                        child: Container(
+                          width: 361,
+                          height: 48,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(9),
+                              color: const Color(0xFFE8BE13)),
+                          child: Center(
+                            child: Text(
+                              'Place Order',
+                              style: GoogleFonts.poppins(
+                                fontSize: 18,
+                                fontWeight: FontWeight.w700,
+                                color: const Color(0xFFFFFFFF),
+                              ),
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                        ),
+                      )
                     ],
                   ),
                 ),
-              )
+              ),
+              const NavigationBarWidget(),
             ],
           );
         },

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:pet_shop_app/models/catalog_models.dart';
-import 'package:pet_shop_app/screens/cart_page.dart';
 import 'package:provider/provider.dart';
 
 import '../provider/cart_provider.dart';

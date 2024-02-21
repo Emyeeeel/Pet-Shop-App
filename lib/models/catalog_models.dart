@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:google_fonts/google_fonts.dart';
 
+// ignore: must_be_immutable
 class CatProductTile extends StatelessWidget {
   final String catName;
   final String catPicPath;
@@ -41,10 +43,9 @@ class CatProductTile extends StatelessWidget {
                   width: 144,
                   child: Text(
                     catName,
-                    style: const TextStyle(
+                    style: GoogleFonts.poppins(
                       color: Color(0xFF2E2D2D),
-                      fontSize: 18,
-                      fontFamily: 'NATS',
+                      fontSize: 14,
                       fontWeight: FontWeight.w400,
                     ),
                   ),
@@ -58,10 +59,9 @@ class CatProductTile extends StatelessWidget {
                     children: [
                       Text(
                         '\$$price',
-                        style: const TextStyle(
-                          color: Color(0xFFE8BE13),
-                          fontSize: 16,
-                          fontFamily: 'NATS',
+                        style: GoogleFonts.poppins(
+                          color: const Color(0xFFE8BE13),
+                          fontSize: 12,
                           fontWeight: FontWeight.w400,
                         ),
                       ),
