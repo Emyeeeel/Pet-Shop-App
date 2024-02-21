@@ -76,6 +76,7 @@ flutter:
     - lib/assets/cat-5.png
     - lib/assets/cat-6.png
     - lib/assets/cat-7.png
+    - lib/assets/cart_svg.svg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
