@@ -5,6 +5,7 @@ import 'package:pet_shop_app/screens/cart_page.dart';
 import 'package:provider/provider.dart';
 
 import '../provider/cart_provider.dart';
+import '../widgets/navigation_bar.dart';
 
 class CatalogPage extends StatefulWidget {
   const CatalogPage({Key? key}) : super(key: key);
@@ -95,15 +96,7 @@ class _CatalogPageState extends State<CatalogPage> {
             },
           ),
         ),
-        GestureDetector(
-          onTap: () => Navigator.push(context,
-              MaterialPageRoute(builder: (context) => const CartPage())),
-          child: Container(
-            width: 50,
-            height: 50,
-            decoration: BoxDecoration(color: Color(0xFF000000)),
-          ),
-        ),
+        const NavigationBarWidget(),
       ],
     ));
   }
