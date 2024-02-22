@@ -6,9 +6,9 @@ class LandingPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       body: Stack(
-        children: [const BackgroundImage(), ContainerWidget()],
+        children: [BackgroundImage(), ContainerWidget()],
       ),
     );
   }

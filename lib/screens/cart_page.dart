@@ -421,7 +421,7 @@ class CartPageWithoutContent extends StatelessWidget {
       body: Consumer<CartModel>(
         builder: (context, value, child) {
           return Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               const SizedBox(
                 height: 65,
@@ -436,11 +436,24 @@ class CartPageWithoutContent extends StatelessWidget {
                   textAlign: TextAlign.center,
                 ),
               ),
+              const SizedBox(
+                height: 70,
+              ),
               Container(
                 width: 140,
                 height: 120,
-                decoration: BoxDecoration(
-                    image: DecorationImage(image: AssetImage('assetName'))),
+                decoration: const BoxDecoration(
+                    image: DecorationImage(
+                        image: AssetImage('lib/assets/cat_astronaut.png'),
+                        fit: BoxFit.cover)),
+              ),
+              Container(
+                width: 140,
+                height: 120,
+                decoration: const BoxDecoration(
+                    image: DecorationImage(
+                        image: AssetImage('lib/assets/shopping_basket.png'),
+                        fit: BoxFit.cover)),
               ),
               const SizedBox(
                 height: 35,
@@ -472,26 +485,30 @@ class CartPageWithoutContent extends StatelessWidget {
               const SizedBox(
                 height: 35,
               ),
-              Container(
-                width: 115,
-                height: 30,
-                decoration: BoxDecoration(
-                    color: const Color(0xFFE8BE13),
-                    borderRadius: BorderRadius.circular(4)),
-                child: Center(
-                  child: Text(
-                    'Browse Catalog',
-                    style: GoogleFonts.poppins(
-                        fontSize: 12,
-                        fontWeight: FontWeight.w700,
-                        color: const Color(0xFFFFFFFF)),
-                    textAlign: TextAlign.center,
+              GestureDetector(
+                onTap: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const CatalogPage()),
+                ),
+                child: Container(
+                  width: 115,
+                  height: 30,
+                  decoration: BoxDecoration(
+                      color: const Color(0xFFE8BE13),
+                      borderRadius: BorderRadius.circular(4)),
+                  child: Center(
+                    child: Text(
+                      'Browse Catalog',
+                      style: GoogleFonts.poppins(
+                          fontSize: 12,
+                          fontWeight: FontWeight.w700,
+                          color: const Color(0xFFFFFFFF)),
+                      textAlign: TextAlign.center,
+                    ),
                   ),
                 ),
               ),
-              const SizedBox(
-                height: 206,
-              ),
+              const Spacer(),
               const NavigationBarWidget(
                 selectedItem: 'cart',
               ),

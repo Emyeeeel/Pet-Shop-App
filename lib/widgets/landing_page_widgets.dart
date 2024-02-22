@@ -26,9 +26,10 @@ class BackgroundImage extends StatelessWidget {
 }
 
 class ContainerWidget extends StatefulWidget {
-  ContainerWidget({Key? key}) : super(key: key);
+  const ContainerWidget({Key? key}) : super(key: key);
 
   @override
+  // ignore: library_private_types_in_public_api
   _ContainerWidgetState createState() => _ContainerWidgetState();
 }
 

@@ -60,7 +60,7 @@ class _NavigationBarWidgetState extends State<NavigationBarWidget> {
                 _selectedItem == 'cart',
                 () => Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => CartPage()),
+                  MaterialPageRoute(builder: (context) => const CartPage()),
                 ),
               ),
               const Spacer(),
