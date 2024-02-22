@@ -1,11 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:pet_shop_app/screens/catalog_page.dart';
 
 import '../screens/cart_page.dart';
 
-class NavigationBarWidget extends StatelessWidget {
-  const NavigationBarWidget({Key? key}) : super(key: key);
+class NavigationBarWidget extends StatefulWidget {
+  final String selectedItem;
+
+  const NavigationBarWidget({Key? key, required this.selectedItem})
+      : super(key: key);
+
+  @override
+  _NavigationBarWidgetState createState() => _NavigationBarWidgetState();
+}
+
+class _NavigationBarWidgetState extends State<NavigationBarWidget> {
+  late String _selectedItem;
+
+  @override
+  void initState() {
+    super.initState();
+    _selectedItem = widget.selectedItem;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -20,101 +37,70 @@ class NavigationBarWidget extends StatelessWidget {
           padding: const EdgeInsets.fromLTRB(30, 20, 30, 10),
           child: Row(
             children: [
-              SizedBox(
-                width: 35,
-                height: 55,
-                child: Column(
-                  children: [
-                    SvgPicture.asset(
-                      'lib/assets/homepage_svg.svg',
-                      height: 25,
-                      width: 28,
-                    ),
-                    Text(
-                      'Home',
-                      style: GoogleFonts.poppins(
-                        color: Color(0xFF2E2D2D),
-                        fontSize: 10,
-                        fontWeight: FontWeight.w400,
-                      ),
-                    ),
-                  ],
-                ),
+              _buildItem(
+                'Home',
+                'lib/assets/homepage_svg.svg',
+                _selectedItem == 'home',
+                () => setState(() => _selectedItem = 'home'),
               ),
               const Spacer(),
-              SizedBox(
-                width: 45,
-                height: 55,
-                child: Column(
-                  children: [
-                    SvgPicture.asset(
-                      'lib/assets/catalog_svg.svg',
-                      height: 25,
-                      width: 31,
-                    ),
-                    Text(
-                      'Catalog',
-                      style: GoogleFonts.poppins(
-                        color: Color(0xFF2E2D2D),
-                        fontSize: 10,
-                        fontWeight: FontWeight.w400,
-                      ),
-                    ),
-                  ],
+              _buildItem(
+                'Catalog',
+                'lib/assets/catalog_svg.svg',
+                _selectedItem == 'catalog',
+                () => Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const CatalogPage()),
                 ),
               ),
               Spacer(),
-              SizedBox(
-                width: 30,
-                height: 55,
-                child: Column(
-                  children: [
-                    GestureDetector(
-                      onTap: () => Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const CartPage())),
-                      child: SvgPicture.asset(
-                        'lib/assets/toCart_svg.svg',
-                        height: 25,
-                        width: 25,
-                      ),
-                    ),
-                    Text(
-                      'Cart',
-                      style: GoogleFonts.poppins(
-                        color: Color(0xFF2E2D2D),
-                        fontSize: 10,
-                        fontWeight: FontWeight.w400,
-                      ),
-                    ),
-                  ],
+              _buildItem(
+                'Cart',
+                'lib/assets/toCart_svg.svg',
+                _selectedItem == 'cart',
+                () => Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const CartPage()),
                 ),
               ),
               Spacer(),
-              SizedBox(
-                width: 35,
-                height: 55,
-                child: Column(
-                  children: [
-                    SvgPicture.asset(
-                      'lib/assets/profile_svg.svg',
-                      height: 25,
-                      width: 25,
-                    ),
-                    Text(
-                      'Profile',
-                      style: GoogleFonts.poppins(
-                        color: Color(0xFF2E2D2D),
-                        fontSize: 10,
-                        fontWeight: FontWeight.w400,
-                      ),
-                    ),
-                  ],
-                ),
-              )
+              _buildItem(
+                'Profile',
+                'lib/assets/profile_svg.svg',
+                _selectedItem == 'profile',
+                () => setState(() => _selectedItem = 'profile'),
+              ),
             ],
           ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildItem(
+      String title, String svgPath, bool isSelected, VoidCallback onTap) {
+    return GestureDetector(
+      onTap: onTap,
+      child: SizedBox(
+        width: 35,
+        height: 55,
+        child: Column(
+          children: [
+            SvgPicture.asset(
+              svgPath,
+              height: 30,
+              width: 30,
+              color: isSelected ? Color(0xFFE8BE13) : Color(0xFF2E2D2D),
+            ),
+            Text(
+              title,
+              style: GoogleFonts.poppins(
+                color: isSelected ? Color(0xFFE8BE13) : Color(0xFF2E2D2D),
+                fontSize: 8,
+                fontWeight: FontWeight.w400,
+              ),
+            ),
+          ],
         ),
       ),
     );

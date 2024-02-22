@@ -1,12 +1,16 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:pet_shop_app/widgets/navigation_bar.dart';
 import 'package:provider/provider.dart';
+
+import 'package:pet_shop_app/widgets/navigation_bar.dart';
 
 import '../provider/cart_provider.dart';
 
 class CartPage extends StatelessWidget {
-  const CartPage({Key? key}) : super(key: key);
+  const CartPage({
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -76,7 +80,7 @@ class CartPage extends StatelessWidget {
                                         value.cartItems[index][0],
                                         style: GoogleFonts.poppins(
                                           color: const Color(0xFF2E2D2D),
-                                          fontSize: 20,
+                                          fontSize: 16,
                                           fontWeight: FontWeight.w500,
                                         ),
                                       ),
@@ -85,7 +89,7 @@ class CartPage extends StatelessWidget {
                                       'Quantity',
                                       style: GoogleFonts.poppins(
                                         color: const Color(0xFF928D8D),
-                                        fontSize: 14,
+                                        fontSize: 10,
                                         fontWeight: FontWeight.w500,
                                       ),
                                     ),
@@ -94,20 +98,27 @@ class CartPage extends StatelessWidget {
                                       height: 20,
                                       child: Row(
                                         children: [
-                                          Container(
-                                            width: 20,
-                                            decoration: BoxDecoration(
-                                                color: const Color(0xFFE8BE13),
-                                                borderRadius:
-                                                    BorderRadius.circular(5)),
-                                            child: Text(
-                                              '-',
-                                              style: GoogleFonts.poppins(
-                                                color: const Color(0xFF000000),
-                                                fontSize: 14,
-                                                fontWeight: FontWeight.w900,
+                                          GestureDetector(
+                                            onTap: () {
+                                              value.decrementQuantity(index);
+                                            },
+                                            child: Container(
+                                              width: 20,
+                                              decoration: BoxDecoration(
+                                                  color:
+                                                      const Color(0xFFE8BE13),
+                                                  borderRadius:
+                                                      BorderRadius.circular(5)),
+                                              child: Text(
+                                                '-',
+                                                style: GoogleFonts.poppins(
+                                                  color:
+                                                      const Color(0xFF000000),
+                                                  fontSize: 14,
+                                                  fontWeight: FontWeight.w900,
+                                                ),
+                                                textAlign: TextAlign.center,
                                               ),
-                                              textAlign: TextAlign.center,
                                             ),
                                           ),
                                           const Spacer(),
@@ -122,20 +133,27 @@ class CartPage extends StatelessWidget {
                                             textAlign: TextAlign.center,
                                           ),
                                           const Spacer(),
-                                          Container(
-                                            width: 20,
-                                            decoration: BoxDecoration(
-                                                color: const Color(0xFFE8BE13),
-                                                borderRadius:
-                                                    BorderRadius.circular(5)),
-                                            child: Text(
-                                              '+',
-                                              style: GoogleFonts.poppins(
-                                                color: const Color(0xFF000000),
-                                                fontSize: 14,
-                                                fontWeight: FontWeight.w900,
+                                          GestureDetector(
+                                            onTap: () {
+                                              value.incrementQuantity(index);
+                                            },
+                                            child: Container(
+                                              width: 20,
+                                              decoration: BoxDecoration(
+                                                  color:
+                                                      const Color(0xFFE8BE13),
+                                                  borderRadius:
+                                                      BorderRadius.circular(5)),
+                                              child: Text(
+                                                '+',
+                                                style: GoogleFonts.poppins(
+                                                  color:
+                                                      const Color(0xFF000000),
+                                                  fontSize: 14,
+                                                  fontWeight: FontWeight.w900,
+                                                ),
+                                                textAlign: TextAlign.center,
                                               ),
-                                              textAlign: TextAlign.center,
                                             ),
                                           )
                                         ],
@@ -151,7 +169,7 @@ class CartPage extends StatelessWidget {
                                     ),
                                   ],
                                 ),
-                              )
+                              ),
                             ],
                           ),
                         ),
@@ -213,7 +231,9 @@ class CartPage extends StatelessWidget {
                   ),
                 ),
               ),
-              const NavigationBarWidget(),
+              const NavigationBarWidget(
+                selectedItem: 'cart',
+              ),
             ],
           );
         },

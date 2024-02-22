@@ -96,7 +96,9 @@ class _CatalogPageState extends State<CatalogPage> {
             },
           ),
         ),
-        const NavigationBarWidget(),
+        const NavigationBarWidget(
+          selectedItem: 'catalog',
+        ),
       ],
     ));
   }
