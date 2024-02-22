@@ -83,6 +83,9 @@ flutter:
     - lib/assets/profile_svg.svg
     - lib/assets/search_svg.svg
     - lib/assets/remove_svg.svg
+    - lib/assets/sphinx.png
+    - lib/assets/cat_paw_svg.svg
+    - lib/assets/expand_svg.svg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

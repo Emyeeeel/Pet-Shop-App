@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:pet_shop_app/screens/details_page.dart';
 
 // ignore: must_be_immutable
 class CatProductTile extends StatelessWidget {
@@ -32,12 +33,20 @@ class CatProductTile extends StatelessWidget {
             children: [
               Padding(
                 padding: const EdgeInsets.fromLTRB(12, 12, 12, 5),
-                child: Container(
-                    width: 144,
-                    height: 101,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(14),
-                        image: DecorationImage(image: AssetImage(catPicPath)))),
+                child: GestureDetector(
+                  onTap: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const DetailsPage()),
+                  ),
+                  child: Container(
+                      width: 144,
+                      height: 101,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(14),
+                          image:
+                              DecorationImage(image: AssetImage(catPicPath)))),
+                ),
               ),
               Padding(
                 padding: const EdgeInsets.fromLTRB(12, 0, 12, 5),
@@ -46,7 +55,7 @@ class CatProductTile extends StatelessWidget {
                   child: Text(
                     catName,
                     style: GoogleFonts.poppins(
-                      color: Color(0xFF2E2D2D),
+                      color: const Color(0xFF2E2D2D),
                       fontSize: 14,
                       fontWeight: FontWeight.w400,
                     ),

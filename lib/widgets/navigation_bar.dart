@@ -53,7 +53,7 @@ class _NavigationBarWidgetState extends State<NavigationBarWidget> {
                   MaterialPageRoute(builder: (context) => const CatalogPage()),
                 ),
               ),
-              Spacer(),
+              const Spacer(),
               _buildItem(
                 'Cart',
                 'lib/assets/toCart_svg.svg',
@@ -63,7 +63,7 @@ class _NavigationBarWidgetState extends State<NavigationBarWidget> {
                   MaterialPageRoute(builder: (context) => CartPage()),
                 ),
               ),
-              Spacer(),
+              const Spacer(),
               _buildItem(
                 'Profile',
                 'lib/assets/profile_svg.svg',
@@ -92,7 +92,9 @@ class _NavigationBarWidgetState extends State<NavigationBarWidget> {
               width: 30,
               child: SvgPicture.asset(
                 svgPath,
-                color: isSelected ? Color(0xFFE8BE13) : Color(0xFF2E2D2D),
+                color: isSelected
+                    ? const Color(0xFFE8BE13)
+                    : const Color(0xFF2E2D2D),
               ),
             ),
             const SizedBox(
@@ -101,7 +103,9 @@ class _NavigationBarWidgetState extends State<NavigationBarWidget> {
             Text(
               title,
               style: GoogleFonts.poppins(
-                color: isSelected ? Color(0xFFE8BE13) : Color(0xFF2E2D2D),
+                color: isSelected
+                    ? const Color(0xFFE8BE13)
+                    : const Color(0xFF2E2D2D),
                 fontSize: 8,
                 fontWeight: FontWeight.w400,
               ),
