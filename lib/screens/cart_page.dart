@@ -3,14 +3,33 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-
 import 'package:pet_shop_app/widgets/navigation_bar.dart';
 
 import '../provider/cart_provider.dart';
 import 'catalog_page.dart';
 
 class CartPage extends StatelessWidget {
-  CartPage({
+  const CartPage({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Consumer<CartModel>(
+      builder: (context, cartModel, child) {
+        if (cartModel.cartItems.length == 0) {
+          return const CartPageWithoutContent();
+        } else {
+          return CartPageWithContent();
+        }
+      },
+    );
+  }
+}
+
+// ignore: must_be_immutable
+class CartPageWithContent extends StatelessWidget {
+  CartPageWithContent({
     Key? key,
   }) : super(key: key);
 
@@ -379,6 +398,99 @@ class CartPage extends StatelessWidget {
                     ],
                   ),
                 ),
+              ),
+              const NavigationBarWidget(
+                selectedItem: 'cart',
+              ),
+            ],
+          );
+        },
+      ),
+    );
+  }
+}
+
+class CartPageWithoutContent extends StatelessWidget {
+  const CartPageWithoutContent({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Consumer<CartModel>(
+        builder: (context, value, child) {
+          return Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const SizedBox(
+                height: 65,
+              ),
+              Center(
+                child: Text(
+                  'Cart',
+                  style: GoogleFonts.poppins(
+                    fontSize: 20,
+                    fontWeight: FontWeight.w400,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+              ),
+              Container(
+                width: 140,
+                height: 120,
+                decoration: BoxDecoration(
+                    image: DecorationImage(image: AssetImage('assetName'))),
+              ),
+              const SizedBox(
+                height: 35,
+              ),
+              SizedBox(
+                width: 300,
+                height: 80,
+                child: Column(
+                  children: [
+                    Text(
+                      'Floating over all this space',
+                      style: GoogleFonts.poppins(
+                          fontSize: 20,
+                          fontWeight: FontWeight.w400,
+                          color: const Color(0xFF1D1D1B)),
+                      textAlign: TextAlign.center,
+                    ),
+                    Text(
+                      'No items, more space, and a sad furriend waiting around the corner. Don’t worry, we have the pawfect idea in store for you.',
+                      style: GoogleFonts.poppins(
+                          fontSize: 11,
+                          fontWeight: FontWeight.w400,
+                          color: const Color(0xFF808080)),
+                      textAlign: TextAlign.center,
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(
+                height: 35,
+              ),
+              Container(
+                width: 115,
+                height: 30,
+                decoration: BoxDecoration(
+                    color: const Color(0xFFE8BE13),
+                    borderRadius: BorderRadius.circular(4)),
+                child: Center(
+                  child: Text(
+                    'Browse Catalog',
+                    style: GoogleFonts.poppins(
+                        fontSize: 12,
+                        fontWeight: FontWeight.w700,
+                        color: const Color(0xFFFFFFFF)),
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+              ),
+              const SizedBox(
+                height: 206,
               ),
               const NavigationBarWidget(
                 selectedItem: 'cart',
