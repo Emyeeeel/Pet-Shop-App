@@ -110,7 +110,18 @@ class CartPage extends StatelessWidget {
                                               textAlign: TextAlign.center,
                                             ),
                                           ),
-                                          Spacer(),
+                                          const Spacer(),
+                                          Text(
+                                            value.cartItems[index][3]
+                                                .toString(),
+                                            style: GoogleFonts.poppins(
+                                              color: const Color(0xFF000000),
+                                              fontSize: 14,
+                                              fontWeight: FontWeight.w900,
+                                            ),
+                                            textAlign: TextAlign.center,
+                                          ),
+                                          const Spacer(),
                                           Container(
                                             width: 20,
                                             decoration: BoxDecoration(
@@ -131,7 +142,7 @@ class CartPage extends StatelessWidget {
                                       ),
                                     ),
                                     Text(
-                                      '\$${value.getTotalPrice()}',
+                                      '\$${value.getTotalForItemPrice(index)}',
                                       style: GoogleFonts.poppins(
                                         color: const Color(0xFFE8BE13),
                                         fontSize: 16,

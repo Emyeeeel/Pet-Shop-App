@@ -85,6 +85,7 @@ class _CatalogPageState extends State<CatalogPage> {
                     catName: value.shopItems[index][0],
                     catPicPath: value.shopItems[index][1],
                     price: value.shopItems[index][2],
+                    quantity: value.shopItems[index][3],
                     onTap: () {
                       Provider.of<CartModel>(context, listen: false)
                           .addToCart(index);

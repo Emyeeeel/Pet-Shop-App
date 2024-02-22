@@ -7,6 +7,7 @@ class CatProductTile extends StatelessWidget {
   final String catName;
   final String catPicPath;
   final double price;
+  final int quantity;
   void Function()? onTap;
 
   CatProductTile(
@@ -14,6 +15,7 @@ class CatProductTile extends StatelessWidget {
       required this.catName,
       required this.catPicPath,
       required this.price,
+      required this.quantity,
       required this.onTap});
 
   @override
