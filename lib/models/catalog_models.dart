@@ -37,7 +37,8 @@ class CatProductTile extends StatelessWidget {
                   onTap: () => Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => const DetailsPage()),
+                        builder: (context) =>
+                            DetailsPage(catProductName: catName)),
                   ),
                   child: Container(
                       width: 144,

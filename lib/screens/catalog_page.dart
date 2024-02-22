@@ -60,7 +60,6 @@ class _CatalogPageState extends State<CatalogPage> {
               ),
               Expanded(
                 child: TextField(
-                  //give som functionality for this textfield so that is filters out this value.shopItems[index][0] (the name of the cat products) according to what is typed in the textfield
                   decoration: InputDecoration(
                     hintText: 'Search Cat Name',
                     hintStyle: GoogleFonts.poppins(

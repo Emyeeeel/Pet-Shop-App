@@ -84,6 +84,11 @@ flutter:
     - lib/assets/search_svg.svg
     - lib/assets/remove_svg.svg
     - lib/assets/sphinx.png
+    - lib/assets/persian.png
+    - lib/assets/bengal.png
+    - lib/assets/abyssinian.png
+    - lib/assets/burmese.png
+    - lib/assets/russian_blue.png
     - lib/assets/cat_paw_svg.svg
     - lib/assets/Expand.png
     - lib/assets/shopping_basket.png

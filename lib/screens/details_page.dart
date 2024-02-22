@@ -1,15 +1,24 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
+
+import '../provider/cart_provider.dart';
 import '../widgets/navigation_bar.dart';
 
 class DetailsPage extends StatelessWidget {
-  const DetailsPage({Key? key}) : super(key: key);
+  const DetailsPage({
+    Key? key,
+    required this.catProductName,
+  }) : super(key: key);
+
+  final String catProductName;
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Column(
+    return Scaffold(body: Consumer<CartModel>(builder: (context, value, child) {
+      return Column(
         children: [
           SizedBox(
             height: 765,
@@ -18,9 +27,10 @@ class DetailsPage extends StatelessWidget {
                 Container(
                   height: 410,
                   width: MediaQuery.of(context).size.width,
-                  decoration: const BoxDecoration(
+                  decoration: BoxDecoration(
                     image: DecorationImage(
-                      image: AssetImage('lib/assets/sphinx.png'),
+                      image: AssetImage(value.catItemsDetails[
+                          value.getShopItemIndex(catProductName)][1]),
                       fit: BoxFit.fill,
                     ),
                   ),
@@ -50,7 +60,8 @@ class DetailsPage extends StatelessWidget {
                                         CrossAxisAlignment.start,
                                     children: [
                                       Text(
-                                        'Place Order',
+                                        value.shopItems[value.getShopItemIndex(
+                                            catProductName)][0],
                                         style: GoogleFonts.poppins(
                                           fontSize: 25,
                                           fontWeight: FontWeight.w700,
@@ -99,7 +110,10 @@ class DetailsPage extends StatelessWidget {
                                   width: 9,
                                 ),
                                 Text(
-                                  'Place Order',
+                                  // ignore: prefer_interpolation_to_compose_strings
+                                  'About ' +
+                                      value.catItemsDetails[value
+                                          .getShopItemIndex(catProductName)][6],
                                   style: GoogleFonts.poppins(
                                     fontSize: 20,
                                     fontWeight: FontWeight.w700,
@@ -141,7 +155,10 @@ class DetailsPage extends StatelessWidget {
                                         height: 4.38,
                                       ),
                                       Text(
-                                        '3.5 kg',
+                                        value.catItemsDetails[
+                                                value.getShopItemIndex(
+                                                    catProductName)][3] +
+                                            ' kg',
                                         style: GoogleFonts.poppins(
                                           fontSize: 18,
                                           fontWeight: FontWeight.w600,
@@ -166,7 +183,10 @@ class DetailsPage extends StatelessWidget {
                                         CrossAxisAlignment.start,
                                     children: [
                                       Text(
-                                        '22 cm',
+                                        value.catItemsDetails[
+                                                value.getShopItemIndex(
+                                                    catProductName)][4] +
+                                            ' cm',
                                         style: GoogleFonts.poppins(
                                           fontSize: 18,
                                           fontWeight: FontWeight.w600,
@@ -213,7 +233,9 @@ class DetailsPage extends StatelessWidget {
                                         height: 4.38,
                                       ),
                                       Text(
-                                        'Dark Pink',
+                                        value.catItemsDetails[
+                                            value.getShopItemIndex(
+                                                catProductName)][5],
                                         style: GoogleFonts.poppins(
                                           fontSize: 18,
                                           fontWeight: FontWeight.w600,
@@ -232,7 +254,8 @@ class DetailsPage extends StatelessWidget {
                           child: SizedBox(
                             height: 125,
                             child: Text(
-                              'The Sphinx cat, hairless and charming, boasts a velvety skin in various colors and patterns. Playful and affectionate, they capture hearts with their unique appearance and lively personalities.',
+                              value.catItemsDetails[
+                                  value.getShopItemIndex(catProductName)][2],
                               style: GoogleFonts.poppins(
                                 fontSize: 15,
                                 fontWeight: FontWeight.w400,
@@ -252,7 +275,7 @@ class DetailsPage extends StatelessWidget {
             selectedItem: 'catalog',
           ),
         ],
-      ),
-    );
+      );
+    }));
   }
 }
