@@ -85,12 +85,18 @@ class _NavigationBarWidgetState extends State<NavigationBarWidget> {
         width: 35,
         height: 55,
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            SvgPicture.asset(
-              svgPath,
+            SizedBox(
               height: 30,
               width: 30,
-              color: isSelected ? Color(0xFFE8BE13) : Color(0xFF2E2D2D),
+              child: SvgPicture.asset(
+                svgPath,
+                color: isSelected ? Color(0xFFE8BE13) : Color(0xFF2E2D2D),
+              ),
+            ),
+            const SizedBox(
+              height: 2.5,
             ),
             Text(
               title,

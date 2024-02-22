@@ -81,6 +81,7 @@ flutter:
     - lib/assets/catalog_svg.svg
     - lib/assets/toCart_svg.svg
     - lib/assets/profile_svg.svg
+    - lib/assets/search_svg.svg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

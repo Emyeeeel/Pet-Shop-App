@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:pet_shop_app/models/catalog_models.dart';
 import 'package:provider/provider.dart';
@@ -45,10 +46,14 @@ class _CatalogPageState extends State<CatalogPage> {
               const SizedBox(
                 width: 15,
               ),
-              Container(
+              SizedBox(
                 width: 16.55,
                 height: 15.74,
-                decoration: const BoxDecoration(color: Color(0xFF181B19)),
+                child: SvgPicture.asset(
+                  'lib/assets/search_svg.svg',
+                  height: 30,
+                  width: 30,
+                ),
               ),
               const SizedBox(
                 width: 15,
