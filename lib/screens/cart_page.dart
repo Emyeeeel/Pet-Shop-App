@@ -1,5 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
@@ -84,13 +85,17 @@ class CartPage extends StatelessWidget {
                                 children: [
                                   SizedBox(
                                     height: 30,
-                                    child: Text(
-                                      value.cartItems[index][0],
-                                      style: GoogleFonts.poppins(
-                                        color: const Color(0xFF2E2D2D),
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.w500,
-                                      ),
+                                    child: Row(
+                                      children: [
+                                        Text(
+                                          value.cartItems[index][0],
+                                          style: GoogleFonts.poppins(
+                                            color: const Color(0xFF2E2D2D),
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.w500,
+                                          ),
+                                        ),
+                                      ],
                                     ),
                                   ),
                                   Text(
@@ -177,6 +182,25 @@ class CartPage extends StatelessWidget {
                                     ),
                                   ),
                                 ],
+                              ),
+                            ),
+                            const Spacer(),
+                            Padding(
+                              padding: const EdgeInsets.fromLTRB(0, 20, 10, 0),
+                              child: Align(
+                                alignment: Alignment.topRight,
+                                child: GestureDetector(
+                                  onTap: () {
+                                    value.removeToCart(index);
+                                  },
+                                  child: SizedBox(
+                                    width: 20,
+                                    height: 20,
+                                    child: SvgPicture.asset(
+                                      'lib/assets/remove_svg.svg',
+                                    ),
+                                  ),
+                                ),
                               ),
                             ),
                           ],
