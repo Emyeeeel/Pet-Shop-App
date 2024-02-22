@@ -23,16 +23,13 @@ class CartModel extends ChangeNotifier {
   get cartItems => _cartItems;
 
   void addToCart(int index) {
-    // Check if _shopItems[index] is already in _cartItems
     if (!_cartItems.any((cartItem) => cartItem[0] == _shopItems[index][0])) {
-      // If not, add it to _cartItems and increment its quantity
-      _shopItems[index][3]++; // Assuming index  3 holds the quantity
+      _shopItems[index][3]++;
       _cartItems.add(_shopItems[index]);
     } else {
-      // If yes, find the item in _cartItems and increment its quantity
       for (var i = 0; i < _cartItems.length; i++) {
         if (_cartItems[i][0] == _shopItems[index][0]) {
-          _cartItems[i][3]++; // Assuming index  3 holds the quantity
+          _cartItems[i][3]++;
           break;
         }
       }
