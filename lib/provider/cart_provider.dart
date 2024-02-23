@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:pet_shop_app/models/catalog_models.dart';
 
 class CartModel extends ChangeNotifier {
   List _shopItems = [
@@ -12,6 +11,17 @@ class CartModel extends ChangeNotifier {
   ];
 
   get shopItems => _shopItems;
+
+  final List _initalShop = [
+    ["Persian Cat", "lib/assets/cat-2.png", 85, 0],
+    ["Sphinx Cat", "lib/assets/cat-3.png", 60, 0],
+    ["Bengal Cat", "lib/assets/cat-4.png", 90, 0],
+    ["Abyssinian Cat", "lib/assets/cat-5.png", 75, 0],
+    ["Burmese Cat", "lib/assets/cat-6.png", 75, 0],
+    ["Russian Blue Cat", "lib/assets/cat-7.png", 60, 0],
+  ];
+
+  get initalShop => _initalShop;
 
   final List _cartItems = [];
 
@@ -133,16 +143,20 @@ class CartModel extends ChangeNotifier {
   }
 
   void searchCat(String item) {
-    final Iterable<dynamic> filteredItems = _shopItems.where((shopItem) {
-      final catName = shopItem[0].toLowerCase();
-      final input = item.toLowerCase();
+    if (item.isEmpty) {
+      _shopItems = List.from(_initalShop);
+    } else {
+      final Iterable<dynamic> filteredItems = _shopItems.where((shopItem) {
+        final catName = shopItem[0].toLowerCase();
+        final input = item.toLowerCase();
 
-      return catName.contains(input);
-    });
-    final List<List<dynamic>> suggestions =
-        filteredItems.map((dynamic item) => item as List<dynamic>).toList();
+        return catName.contains(input);
+      });
+      final List<List<dynamic>> suggestions =
+          filteredItems.map((dynamic item) => item as List<dynamic>).toList();
 
-    _shopItems = suggestions;
+      _shopItems = suggestions;
+    }
     notifyListeners();
   }
 }
