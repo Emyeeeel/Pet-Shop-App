@@ -139,12 +139,10 @@ class CartModel extends ChangeNotifier {
 
       return catName.contains(input);
     });
-
-    // Cast each dynamic item to List<dynamic> and collect them into a list
     final List<List<dynamic>> suggestions =
         filteredItems.map((dynamic item) => item as List<dynamic>).toList();
 
     _shopItems = suggestions;
-    notifyListeners(); // Notify listeners to rebuild UI with the new list
+    notifyListeners();
   }
 }
