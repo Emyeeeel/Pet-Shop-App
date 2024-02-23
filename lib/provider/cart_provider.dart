@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:pet_shop_app/models/catalog_models.dart';
 
 class CartModel extends ChangeNotifier {
-  final List _shopItems = [
+  List _shopItems = [
     ["Persian Cat", "lib/assets/cat-2.png", 85, 0],
     ["Sphinx Cat", "lib/assets/cat-3.png", 60, 0],
     ["Bengal Cat", "lib/assets/cat-4.png", 90, 0],
@@ -129,5 +130,21 @@ class CartModel extends ChangeNotifier {
       }
     }
     return index;
+  }
+
+  void searchCat(String item) {
+    final Iterable<dynamic> filteredItems = _shopItems.where((shopItem) {
+      final catName = shopItem[0].toLowerCase();
+      final input = item.toLowerCase();
+
+      return catName.contains(input);
+    });
+
+    // Cast each dynamic item to List<dynamic> and collect them into a list
+    final List<List<dynamic>> suggestions =
+        filteredItems.map((dynamic item) => item as List<dynamic>).toList();
+
+    _shopItems = suggestions;
+    notifyListeners(); // Notify listeners to rebuild UI with the new list
   }
 }
